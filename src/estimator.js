@@ -39,8 +39,8 @@ const severeCurrentlyInfected= (data.reportedCases * 50);
 const infectionsByRequestedTime= currentlyInfected * multiplier;
 const severeInfectionsByRequestedTime= severeCurrentlyInfected * multiplier;
  
-const severeCasesByRequestedTime = (0.15 * infectionsByRequestedTime);
-const severelySevereCasesByRequestedTime= (0.15 * severeInfectionsByRequestedTime);
+const severeCasesByRequestedTime = Math.floor (0.15 * infectionsByRequestedTime);
+const severelySevereCasesByRequestedTime= Math.floor(0.15 * severeInfectionsByRequestedTime);
 
 const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severelySevereCasesByRequestedTime);
 const severeHospitalBedsByRequestedTime= Math.trunc(availableBeds - severelySevereCasesByRequestedTime);
