@@ -28,7 +28,7 @@ const covid19ImpactEstimator = (data) => {
   const multiplier= 2 ** factor;
 
   //const capacityBeds= (0.90||0.95) * data.totalHospitalBeds;
-  const availableBeds= 0.35 * 0.95 * data.totalHospitalBeds;
+  const availableBeds= 0.35 * 0.90 * data.totalHospitalBeds;
 
 
 
