@@ -43,7 +43,7 @@ const covid19ImpactEstimator = (data) => {
         } }
            
      };
-};
+
   /* const currentlyInfected = reportedCases * 10;
   const severeImpact = currentlyInfected * 50;
 
