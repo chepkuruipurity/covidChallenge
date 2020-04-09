@@ -30,6 +30,8 @@ const covid19ImpactEstimator = (data) => {
   //const capacityBeds= (0.90||0.95) * data.totalHospitalBeds;
   const availableBeds= (0.35 * data.totalHospitalBeds);
 
+  const moneyFlight= (data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * days);
+
 
 
 
@@ -45,6 +47,16 @@ const severelySevereCasesByRequestedTime= Math.floor(0.15 * severeInfectionsByRe
 const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCasesByRequestedTime);
 const severeHospitalBedsByRequestedTime= Math.trunc(availableBeds - severelySevereCasesByRequestedTime);
 
+const casesForICUByRequestedTime = (0.05 * infectionsByRequestedTime);
+const severecasesForICUByRequestedTime = (0.05 * severeInfectionsByRequestedTime);
+
+
+const casesForVentilatorsByRequestedTime = (0.02 * infectionsByRequestedTime);
+const severecasesForVentilatorsByRequestedTime = (0.02 * severeInfectionsByRequestedTime);
+
+const dollarsInFlight= infectionsByRequestedTime* moneyFlight;
+const severedollarsInFlight= severeInfectionsByRequestedTime* moneyFlight;
+
 
 return  { 
     data,
@@ -52,13 +64,19 @@ return  {
            currentlyInfected: currentlyInfected ,
            infectionsByRequestedTime: infectionsByRequestedTime,
            severeCasesByRequestedTime:severeCasesByRequestedTime,
-           hospitalBedsByRequestedTime: hospitalBedsByRequestedTime
+           hospitalBedsByRequestedTime: hospitalBedsByRequestedTime,
+           casesForICUByRequestedTime: casesForICUByRequestedTime,
+           casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTime,
+           dollarsInFlight: dollarsInFlight
            },
     severeImpact:{
       currentlyInfected: severeCurrentlyInfected,
         infectionsByRequestedTime: severeInfectionsByRequestedTime,
         severeCasesByRequestedTime: severelySevereCasesByRequestedTime,
-        hospitalBedsByRequestedTime: severeHospitalBedsByRequestedTime
+        hospitalBedsByRequestedTime: severeHospitalBedsByRequestedTime,
+        casesForICUByRequestedTime: severecasesForICUByRequestedTime,
+        casesForVentilatorsByRequestedTime: severecasesForVentilatorsByRequestedTime,
+        dollarsInFlight: severedollarsInFlight
         } }
            
      };
