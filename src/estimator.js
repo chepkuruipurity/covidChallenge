@@ -54,8 +54,8 @@ const severecasesForICUByRequestedTime = (0.05 * severeInfectionsByRequestedTime
 const casesForVentilatorsByRequestedTime = (0.02 * infectionsByRequestedTime);
 const severecasesForVentilatorsByRequestedTime = (0.02 * severeInfectionsByRequestedTime);
 
-const dollarsInFlight= Math.floor(infectionsByRequestedTime* moneyFlight);
-const severedollarsInFlight= Math.floor(severeInfectionsByRequestedTime* moneyFlight);
+const dollarsInFlight= Number((infectionsByRequestedTime* moneyFlight).toFixed(2));
+const severedollarsInFlight=Number((severeInfectionsByRequestedTime* moneyFlight).toFixed(2));
 
 
 return  { 
