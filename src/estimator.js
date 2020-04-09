@@ -17,16 +17,16 @@ const covid19ImpactEstimator = (data) => {
 
   // period estimations
   let time;
-  if (data.periodType === 'days') time = 2 ** Math.trunc(data.timeToElapse / 3);
-  else if (data.periodType === 'weeks') time = 2 ** Math.trunc((data.timeToElapse * 7) / 3);
-  else if (data.periodType === 'months') time = 2 ** Math.trunc((data.timeToElapse * 30) / 3);
+  if (data.periodType === 'days') time = 2 ** (data.timeToElapse / 3);
+  else if (data.periodType === 'weeks') time = 2 ** ((data.timeToElapse * 7) / 3);
+  else if (data.periodType === 'months') time = 2 ** ((data.timeToElapse * 30) / 3);
 
 
 const currentlyInfected= (data.reportedCases * 10);
 const severeCurrentlyInfected= (data.reportedCases * 50);
 
-const infectionsByRequestedTime= currentlyInfected * time;
-const severeInfectionsByRequestedTime= severeCurrentlyInfected * time;
+const infectionsByRequestedTime= currentlyInfected * Number(time);
+const severeInfectionsByRequestedTime= severeCurrentlyInfected * Number(time);
    return  { 
     data,
        impact : {
