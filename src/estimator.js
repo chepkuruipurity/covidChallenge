@@ -23,7 +23,7 @@ const covid19ImpactEstimator = (data) => {
   }
 
   const days = data.timeToElapse;
-  const factor = Math.round(days / 3);
+  const factor = Math.floor(days / 3);
 
   const multiplier= 2 ** factor;
 
