@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import { normalizeDays } from './helper';
 const covid19ImpactEstimator = (data) => {
 /* {
         region: {
@@ -30,26 +31,21 @@ const covid19ImpactEstimator = (data) => {
         },
        impact : {
            currentlyInfected : (data.reportedCases * 10),
-           infectionsByRequestedTime : function normalizeTime() {
-               if( data.periodType == "days") {
-                   return currentlyInfected* Math.pow(2,(data.timeToElapse/3))
-               } else if(data.periodType=='weeks'){
-                  return  currentlyInfected * Math.pow(2, (data.timeToElapse * 7/3));
-               } else if(data.periodType == 'months'){
-                  return currentlyInfected * Math.pow(2, (data.timeToElapse * 28/3))
-               }}
+           infectionsByRequestedTime : (data)=>{
+            let days= normalizeDays(data);
+            let factor= Number.parseInt(days/3,10);
+            return 2 ** factor;
+        }
            },
     severeImpact:{
         currentlyInfected : (data.reportedCases * 50),
-        infectionsByRequestedTime : function normalizeTime() {
-            if( data.periodType == "days") {
-                return currentlyInfected* Math.pow(2,(data.timeToElapse/3))
-            } else if(data.periodType=='weeks'){
-               return  currentlyInfected * Math.pow(2, (data.timeToElapse * 7/3));
-            } else if(data.periodType == 'months'){
-               return currentlyInfected * Math.pow(2, (data.timeToElapse * 28/3))
-            }}
-    } };
+        infectionsByRequestedTime : (data)=>{
+            let days= normalizeDays(data);
+            let factor= Number.parseInt(days/3,10);
+            return 2 ** factor;
+        } }
+           
+     };
 };
   /* const currentlyInfected = reportedCases * 10;
   const severeImpact = currentlyInfected * 50;
