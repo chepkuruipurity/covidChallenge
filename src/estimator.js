@@ -32,16 +32,23 @@ const covid19ImpactEstimator = (data) => {
            currentlyInfected : (data.reportedCases * 10),
            infectionsByRequestedTime : function normalizeTime(periodType) {
                if( data.periodType == "days") {
-                   return currentlyInfected* Math.pow(2,(data.timeToElapse/3))
+                   return impact.currentlyInfected* Math.pow(2,(data.timeToElapse/3))
                } else if(data.periodType=='weeks'){
-                  return  currentlyInfected * Math.pow(2, (data.timeToElapse * 7/3));
+                  return  impact.currentlyInfected * Math.pow(2, (data.timeToElapse * 7/3));
                } else if(data.periodType == 'months'){
-                  return currentlyInfected * Math.pow(2, (data.timeToElapse * 28/3))
+                  return impact.currentlyInfected * Math.pow(2, (data.timeToElapse * 28/3))
                }}
            },
     severeImpact:{
         currentlyInfected : (data.reportedCases * 50),
-        infectionsByRequestedTime : (currentlyInfected * Math.pow(2,(data.timeToElapse/3)))
+        infectionsByRequestedTime : function normalizeTime(periodType) {
+            if( data.periodType == "days") {
+                return impact.currentlyInfected* Math.pow(2,(data.timeToElapse/3))
+            } else if(data.periodType=='weeks'){
+               return  impact.currentlyInfected * Math.pow(2, (data.timeToElapse * 7/3));
+            } else if(data.periodType == 'months'){
+               return impact.currentlyInfected * Math.pow(2, (data.timeToElapse * 28/3))
+            }}
     } }
 };
   /* const currentlyInfected = reportedCases * 10;
