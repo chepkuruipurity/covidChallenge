@@ -36,12 +36,12 @@ const severeInfectionsByRequestedTime= severeCurrentlyInfected * multiplier;
    return  { 
     data,
        impact : {
-           currentlyInfected ,
-           infectionsByRequestedTime 
+           currentlyInfected: currentlyInfected ,
+           infectionsByRequestedTime: infectionsByRequestedTime
            },
     severeImpact:{
-        severeCurrentlyInfected,
-        severeInfectionsByRequestedTime
+      currentlyInfected: severeCurrentlyInfected,
+        infectionsByRequestedTime: severeInfectionsByRequestedTime
         } }
            
      };
