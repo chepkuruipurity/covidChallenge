@@ -30,7 +30,7 @@ const covid19ImpactEstimator = (data) => {
   //const capacityBeds= (0.90||0.95) * data.totalHospitalBeds;
   const availableBeds= (0.35 * data.totalHospitalBeds);
 
-  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD / days);
+  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * days);
 
 
 
@@ -41,21 +41,21 @@ const severeCurrentlyInfected= (data.reportedCases * 50);
 const infectionsByRequestedTime= currentlyInfected * multiplier;
 const severeInfectionsByRequestedTime= severeCurrentlyInfected * multiplier;
  
-const severeCasesByRequestedTime = Math.floor (0.15 * infectionsByRequestedTime);
-const severelySevereCasesByRequestedTime= Math.floor(0.15 * severeInfectionsByRequestedTime);
+const severeCasesByRequestedTime = Math.floor ((15/100) * infectionsByRequestedTime);
+const severelySevereCasesByRequestedTime= Math.floor((15/100) * severeInfectionsByRequestedTime);
 
 const hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeCasesByRequestedTime);
 const severeHospitalBedsByRequestedTime= Math.trunc(availableBeds - severelySevereCasesByRequestedTime);
 
-const casesForICUByRequestedTime = Math.floor(0.05 * infectionsByRequestedTime);
-const severecasesForICUByRequestedTime = Math.floor(0.05 * severeInfectionsByRequestedTime);
+const casesForICUByRequestedTime = Math.floor((5/100) * infectionsByRequestedTime);
+const severecasesForICUByRequestedTime = Math.floor((5/100) * severeInfectionsByRequestedTime);
 
 
-const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
-const severecasesForVentilatorsByRequestedTime = Math.floor(0.02 * severeInfectionsByRequestedTime);
+const casesForVentilatorsByRequestedTime = Math.floor((2/100) * infectionsByRequestedTime);
+const severecasesForVentilatorsByRequestedTime = Math.floor((2/100) * severeInfectionsByRequestedTime);
 
-const dollarsInFlight= Math.floor(infectionsByRequestedTime* moneyFlight)
-const severedollarsInFlight= Math.floor(severeInfectionsByRequestedTime* moneyFlight);
+const dollarsInFlight= Math.floor(infectionsByRequestedTime * moneyFlight)
+const severedollarsInFlight= Math.floor(severeInfectionsByRequestedTime * moneyFlight);
 
 
 return  { 
