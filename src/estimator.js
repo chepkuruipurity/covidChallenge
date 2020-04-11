@@ -30,7 +30,7 @@ const covid19ImpactEstimator = (data) => {
   //const capacityBeds= (0.90||0.95) * data.totalHospitalBeds;
   const availableBeds= (0.35 * data.totalHospitalBeds);
 
-  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD / days);
+  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD );
 
 
 
@@ -54,8 +54,8 @@ const severecasesForICUByRequestedTime = Math.floor((5/100) * severeInfectionsBy
 const casesForVentilatorsByRequestedTime = Math.floor((2/100) * infectionsByRequestedTime);
 const severecasesForVentilatorsByRequestedTime = Math.floor((2/100) * severeInfectionsByRequestedTime);
 
-const dollarsInFlight= Math.floor(infectionsByRequestedTime * moneyFlight)
-const severedollarsInFlight= Math.floor(severeInfectionsByRequestedTime * moneyFlight);
+const dollarsInFlight= Math.floor((infectionsByRequestedTime * moneyFlight)/days)
+const severedollarsInFlight= Math.floor(severeInfectionsByRequestedTime * moneyFlight)/days);
 
 
 return  { 
