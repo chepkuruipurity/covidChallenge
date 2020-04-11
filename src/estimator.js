@@ -30,7 +30,7 @@ const covid19ImpactEstimator = (data) => {
   //const capacityBeds= (0.90||0.95) * data.totalHospitalBeds;
   const availableBeds= (0.35 * data.totalHospitalBeds);
 
-  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * days);
+  const moneyFlight= Math.floor(data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD / days);
 
 
 
