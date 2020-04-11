@@ -67,7 +67,7 @@ return  {
            hospitalBedsByRequestedTime: hospitalBedsByRequestedTime,
            casesForICUByRequestedTime: casesForICUByRequestedTime,
            casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTime,
-           dollarsInFlight: dollarsInFlight
+           dollarsInFlight: Math.trunc(dollarsInFlight)
            },
     severeImpact:{
       currentlyInfected: severeCurrentlyInfected,
@@ -76,7 +76,7 @@ return  {
         hospitalBedsByRequestedTime: severeHospitalBedsByRequestedTime,
         casesForICUByRequestedTime: severecasesForICUByRequestedTime,
         casesForVentilatorsByRequestedTime: severecasesForVentilatorsByRequestedTime,
-        dollarsInFlight: severedollarsInFlight
+        dollarsInFlight: Math.trunc(severedollarsInFlight)
         } }
            
      };
