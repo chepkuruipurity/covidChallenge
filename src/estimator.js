@@ -54,8 +54,8 @@ const severecasesForICUByRequestedTime = Math.floor(0.05* severeInfectionsByRequ
 const casesForVentilatorsByRequestedTime = Math.floor(0.02 * infectionsByRequestedTime);
 const severecasesForVentilatorsByRequestedTime = Math.floor(0.02 * severeInfectionsByRequestedTime);
 
-const dollarsInFlight= Math.floor((infectionsByRequestedTime * data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD *days)
-const severedollarsInFlight= Math.floor((severeInfectionsByRequestedTime *data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD* days);
+const dollarsInFlight= Math.floor((infectionsByRequestedTime * data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD /days)
+const severedollarsInFlight= Math.floor((severeInfectionsByRequestedTime *data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD / days);
 
 
 return  { 
