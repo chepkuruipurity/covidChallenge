@@ -7,37 +7,53 @@
   <title>Basic Form</title>
   <meta name="description" content="Covid 19 ">
 
+
   <!-- Mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title class="text-center mt-5">Covid 19</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+      @media (max-width: 768px) {
+      .form-group {
+        width: 100%;
+      }
+
+      .form-control {
+        margin-top: 48px;
+        width: 100%;
+      }
+    }
+</style>
 </head>
 <body>
     <main>
-        <form>
-            <div class="data-population">
+        <form class="form">
+            <div class="data-population form-group">
                 <label for="population">Population</label>
-                <input type="text" id="population" name="population" aria-placeholder="Enter population"/>
+                <input type="text" class="form-control"  id="population" name="population" aria-placeholder="Enter population"/>
 
             </div>
-            <div class="data-time-to-elapse">
+            <div class="data-time-to-elapse form-group">
                 <label for="timeElapse">Time to Elapse</label>
-                <input type="text" id="timeElapse" name="timeElapse" aria-placeholder="Enter time Elapsed"/>
+                <input type="text" id="timeElapse" class="form-control" name="timeElapse" aria-placeholder="Enter time Elapsed"/>
 
             </div>
-            <div class="data-reported-cases">
+            <div class="data-reported-cases form-group">
                 <label for="reportedCases">Reported cases</label>
-                <input type="text" id="reportedCases" name="reportedCases"
+                <input type="text" id="reportedCases" class="form-control"  name="reportedCases"
                  aria-placeholder="Number of reported cases"/>
 
             </div>
-            <div class="data-total-hospital-beds">
+            <div class="data-total-hospital-beds form-group">
                 <label for="beds">Total hospital beds</label>
-                <input type="text" id="beds" name="beds"
+                <input type="text" class="form-control"  id="beds" name="beds"
                  aria-placeholder="Total hospital beds"/>
 
             </div>
-            <div class="data-period-type">
+            <div class="data-period-type form-group">
                 <label for="periodType">Period type:
-                    <select>
+                    <select class="form-control">
                         <option>days</option>
                         <option>weeks</option>
                         <option>months</option>
@@ -46,9 +62,38 @@
 
 
             </div>
-            <button class="data-go-estimate" type="button">Submit</button>
+            <button class="data-go-estimate btn btn-primary" type="button">Submit</button>
         </form>
     </main>
+
+    
+
+        
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   <script async>
+       const form = document.querySelector('.form');
+
+form.addEventListener('submit', async (e) => {
+   
+  e.preventDefault();
+
+  const inputData = {
+    region: {
+      name: document.querySelector('input[data-region-name]').value,
+      avgAge: Number(document.querySelector('input[data-region-avgAge]').value),
+      avgDailyIncomeInUSD: Number(document.querySelector('input[data-region-avgDailyIncomeInUSD]').value),
+      avgDailyIncomePopulation: Number(document.querySelector('input[data-region-avgDailyIncomePopulation]').value)
+    },
+    periodType: document.querySelector('select[data-period-type]').value,
+    timeToElapse: document.querySelector('input[data-time-to-elapse]').value,
+    reportedCases: document.querySelector('input[data-reported-cases]').value,
+    population: document.querySelector('input[data-population]').value,
+    totalHospitalBeds: document.querySelector('input[data-total-hospital-beds]').value
+  }; });
+   </script>
 
 </body>
 </html> 
