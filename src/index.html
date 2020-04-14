@@ -4,25 +4,128 @@
 <head>
   <meta charset="utf-8">
 
+ 
   <meta name="description" content="Covid 19 ">
 
 
   <!-- Mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Covid 19</title>
+  <title >Covid 19</title>
 <!--   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 <style>
-      body { 
-        background-color: white;
-        color: black;
+    body {
+      margin: 0 0;
+      background-color: #f5f9fd;
+      font-family: 'Poppins', sans-serif;
     }
-     .btn-primary {
-         color: #040303;
-         background-color: #799ec5;
-     }
-      
-      
+
+    header {
+      position: fixed;
+      display: flex;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px #bdbdbd;
+    }
+
+    header h1 {
+      margin: 0;
+      margin-right: 10px;
+    }
+
+    main {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 200px;
+    }
+
+    .form-section {
+      display: flex;
+      flex-wrap: wrap;
+      border-top: 2px solid #bdbdbd;
+      padding-top: 36px;
+      margin-bottom: 50px;
+    }
+
+    .form-section-info {
+      width: 50%;
+    }
+
+    .form-section-info h3 {
+      width: 80%;
+      margin-block-start: 0px;
+      color: #002239;
+    }
+
+    .form-section-info p {
+      width: 80%;
+      color: #537291;
+    }
+
+    .form-section-inputs {
+      width: 50%;
+    }
+
+    .form-input {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .form-input label {
+      width: 100%;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #002239;
+
+    }
+
+    .form-input input {
+      width: 473px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding-left: 16px;
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .form-input select {
+      width: 491px;
+      height: 50px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding-left: 16px;
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .form-section button {
+      width: 473px;
+      height: 48px;
+      background-color: #0964BF;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      color: #f5f9fd;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .form-section-info {
+        width: 100%;
+      }
+
+      .form-section-inputs {
+        margin-top: 48px;
+        width: 100%;
+      }
+    }
 
       
     
@@ -30,72 +133,103 @@
 </head>
 <body>
     <main>
+        <h2>COVID-19 Estimator</h2>
         <form class="form">
-            <div class="data-population form-group">
-                <label for="population">Population</label>
-                <input type="text" class="form-control"  id="population" name="population" aria-placeholder="Enter population"/>
-
+          <section class="form-section">
+            <div class="form-section-info">
+              <h3>Region</h4>
+              <p>Some basic information about the region.</p>
             </div>
-            <div class="data-time-to-elapse form-group">
-                <label for="timeElapse">Time to Elapse</label>
-                <input type="text" id="timeElapse" class="form-control" name="timeElapse" aria-placeholder="Enter time Elapsed"/>
-
+            <div class="form-section-inputs">
+              <div class="form-input">
+                <label for="regionName">Name</label>
+                <input type="text" id="regionName" name="regionName" data-region-name placeholder="Ex. Africa" required>
+              </div>
+              <div class="form-input">
+                <label for="regionAvgAge">Average Age</label>
+                <input type="text" id="regionAvgAge" name="regionAvgAge" data-region-avgAge placeholder="Ex. 17" required>
+              </div>
+              <div class="form-input">
+                <label for="regionAvgDailyIncomeInUSD">Average Daily Income In USD</label>
+                <input type="text" id="regionAvgDailyIncomeInUSD" data-region-avgDailyIncomeInUSD placeholder="Ex. 5" required>
+              </div>
+              <div class="form-input">
+                <label for="regionAvgDailyIncomePopulation">Percentage of Population With Average Daily Income</label>
+                <input type="text" id="regionAvgDailyIncomePopulation" data-region-avgDailyIncomePopulation placeholder="Ex. 0.75 for 70%" required>
+              </div>
             </div>
-            <div class="data-reported-cases form-group">
-                <label for="reportedCases">Reported cases</label>
-                <input type="text" id="reportedCases" class="form-control"  name="reportedCases"
-                 aria-placeholder="Number of reported cases"/>
-
-            </div>
-            <div class="data-total-hospital-beds form-group">
-                <label for="beds">Total hospital beds</label>
-                <input type="text" class="form-control"  id="beds" name="beds"
-                 aria-placeholder="Total hospital beds"/>
-
-            </div>
-            <div class="data-period-type form-group">
-                <label for="periodType">Period type:
-                    <select class="form-control">
-                        <option>days</option>
-                        <option>weeks</option>
-                        <option>months</option>
-                    </select>
-                </label>
-
-
-            </div>
-            <button class="data-go-estimate btn btn-primary" type="button">Submit </button>
-        </form>
-    </main>
-
+          </section>
     
-
-        
- <!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
- -->
-   <script async>
-       const form = document.querySelector('.form');
-
-form.addEventListener('submit', async (e) => {
-   
-  e.preventDefault();
-
-  const inputData = {
-    region: {
-      name: document.querySelector('input[data-region-name]').value,
-      avgAge: Number(document.querySelector('input[data-region-avgAge]').value),
-      avgDailyIncomeInUSD: Number(document.querySelector('input[data-region-avgDailyIncomeInUSD]').value),
-      avgDailyIncomePopulation: Number(document.querySelector('input[data-region-avgDailyIncomePopulation]').value)
-    },
-    periodType: document.querySelector('select[data-period-type]').value,
-    timeToElapse: document.querySelector('input[data-time-to-elapse]').value,
-    reportedCases: document.querySelector('input[data-reported-cases]').value,
-    population: document.querySelector('input[data-population]').value,
-    totalHospitalBeds: document.querySelector('input[data-total-hospital-beds]').value
-  }; });
-   </script>
-
+          <section class="form-section">
+            <div class="form-section-info">
+              <h3>Infection Data</h4>
+              <p>Some information about the present state.</p>
+            </div>
+            <div class="form-section-inputs">
+              <div class="form-input">
+                <label for="reportedCases">Number of Reported Cases</label>
+                <input type="number" id="reportedCases" name="reportedCases" placeholder="674" data-reported-cases required>
+              </div>
+              <div class="form-input">
+                <label for="population">Population</label>
+                <input type="number" id="population" name="population" placeholder="300000" data-population required>
+              </div>
+              <div class="form-input">
+                  
+                <label for="totalHospitalBeds">Total Number of Hospital Beds</label>
+                <input type="number" id="totalHospitalBeds" name="totalHospitalBeds" placeholder="5000" data-total-hospital-beds required>
+              </div>
+            </div>
+          </section>
+    
+          <section class="form-section">
+            <div class="form-section-info">
+              <h3>Estimate Settings</h4>
+              <p>Get the estimated impact at this time.</p>
+            </div>
+            <div class="form-section-inputs">
+              <div class="form-input">
+                <label for="periodType">Period Type</label>
+                <select name="periodType" id="periodType" data-period-type>
+                  <option value="days">days</option>
+                  <option value="weeks">weeks</option>
+                  <option value="months">months</option>
+                </select>
+              </div>
+              <div class="form-input">
+                <label for="timeToElapse">Time Elapsed</label>
+                <input type="number" id="timeToElapse" name="timeToElapse" placeholder="17" data-time-to-elapse required>
+              </div>
+            </div>
+          </section>
+    
+          <section class="form-section">
+            <button data-go-estimate>Generate Impact</button>
+          </section>
+        </form>
+        <div class="result"></div>
+      </main>
+    
+      <script async>
+        const form = document.querySelector('.form');
+    
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+    
+          const inputData = {
+            region: {
+              name: document.querySelector('input[data-region-name]').value,
+              avgAge: Number(document.querySelector('input[data-region-avgAge]').value),
+              avgDailyIncomeInUSD: Number(document.querySelector('input[data-region-avgDailyIncomeInUSD]').value),
+              avgDailyIncomePopulation: Number(document.querySelector('input[data-region-avgDailyIncomePopulation]').value)
+            },
+            periodType: document.querySelector('select[data-period-type]').value,
+            timeToElapse: document.querySelector('input[data-time-to-elapse]').value,
+            reportedCases: document.querySelector('input[data-reported-cases]').value,
+            population: document.querySelector('input[data-population]').value,
+            totalHospitalBeds: document.querySelector('input[data-total-hospital-beds]').value
+          };
+        });
+    </script>
 </body>
 </html> 
